@@ -2,20 +2,59 @@
 <html lang="nl">
 <head>
   <meta charset="UTF-8">
-  <title>Congressen & Seminars - Sander</title>
+  <title>Congressen & Seminars - Sander van Veldhuizen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Overzicht van de congressen, seminars en technische events die Sander van Veldhuizen heeft bezocht, van Kubernetes en cloud-native tot Azure, AWS en automation.">
+  <meta name="author" content="Sander van Veldhuizen">
+  <link rel="canonical" href="https://www.servisan.nl/">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <!-- Preview bij delen op LinkedIn e.d. -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="nl_NL">
+  <meta property="og:url" content="https://www.servisan.nl/">
+  <meta property="og:title" content="Congressen & Seminars - Sander van Veldhuizen">
+  <meta property="og:description" content="De grotere congressen, seminars en technische events die ik de afgelopen jaren heb bezocht.">
+  <meta name="twitter:card" content="summary">
+
+  <meta name="color-scheme" content="light dark">
   <style>
     :root {
       --bg: #f5f5f7;
+      --bg-gradient: radial-gradient(circle at top, #eef2ff 0, #f5f5f7 45%, #f9fafb 100%);
       --card-bg: #ffffff;
+      --card-border: rgba(148, 163, 184, 0.25);
       --accent: #2563eb;
       --accent-soft: #dbeafe;
+      --tag-text: #1d4ed8;
+      --tag-border: rgba(129, 140, 248, 0.5);
       --text: #111827;
+      --text-body: #374151;
       --muted: #6b7280;
+      --separator: #d1d5db;
       --line: #e5e7eb;
       --shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
       --radius: 10px;
       --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f172a;
+        --bg-gradient: radial-gradient(circle at top, #1e1b4b 0, #0f172a 45%, #0b1120 100%);
+        --card-bg: #1e293b;
+        --card-border: rgba(148, 163, 184, 0.15);
+        --accent: #60a5fa;
+        --accent-soft: #1e3a8a;
+        --tag-text: #bfdbfe;
+        --tag-border: rgba(96, 165, 250, 0.35);
+        --text: #f1f5f9;
+        --text-body: #cbd5e1;
+        --muted: #94a3b8;
+        --separator: #475569;
+        --line: #334155;
+        --shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+      }
     }
 
     * {
@@ -26,7 +65,9 @@
 
     body {
       font-family: var(--font);
-      background: radial-gradient(circle at top, #eef2ff 0, #f5f5f7 45%, #f9fafb 100%);
+      background: var(--bg);
+      background-image: var(--bg-gradient);
+      background-attachment: fixed;
       color: var(--text);
       line-height: 1.6;
       padding: 40px 16px;
@@ -46,6 +87,7 @@
       font-size: 2.1rem;
       letter-spacing: -0.03em;
       margin-bottom: 8px;
+      text-wrap: balance;
     }
 
     header p {
@@ -53,16 +95,20 @@
       font-size: 0.98rem;
     }
 
-    header a {
+    a {
       color: var(--accent);
       text-decoration: none;
-      border-bottom: 1px solid rgba(37, 99, 235, 0.3);
+      border-bottom: 1px solid currentColor;
     }
 
-    .tagline {
-      margin-top: 10px;
-      font-size: 0.95rem;
-      color: var(--muted);
+    a:hover {
+      border-bottom-width: 2px;
+    }
+
+    a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+      border-radius: 2px;
     }
 
     .timeline {
@@ -90,6 +136,10 @@
       color: var(--muted);
     }
 
+    .events {
+      list-style: none;
+    }
+
     .event {
       position: relative;
       margin-bottom: 18px;
@@ -113,7 +163,7 @@
       border-radius: var(--radius);
       padding: 14px 16px 12px;
       box-shadow: var(--shadow);
-      border: 1px solid rgba(148, 163, 184, 0.25);
+      border: 1px solid var(--card-border);
     }
 
     .event-title {
@@ -131,7 +181,7 @@
     .meta span + span::before {
       content: "•";
       margin: 0 6px;
-      color: #d1d5db;
+      color: var(--separator);
     }
 
     .tags {
@@ -139,6 +189,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
+      list-style: none;
     }
 
     .tag {
@@ -146,14 +197,14 @@
       padding: 2px 8px;
       border-radius: 999px;
       background: var(--accent-soft);
-      color: #1d4ed8;
-      border: 1px solid rgba(129, 140, 248, 0.5);
+      color: var(--tag-text);
+      border: 1px solid var(--tag-border);
     }
 
     .insight {
       font-size: 0.9rem;
       margin-top: 4px;
-      color: #374151;
+      color: var(--text-body);
     }
 
     footer {
@@ -172,368 +223,419 @@
       }
     }
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "url": "https://www.servisan.nl/",
+    "name": "Congressen & Seminars",
+    "inLanguage": "nl",
+    "mainEntity": {
+      "@type": "Person",
+      "name": "Sander van Veldhuizen",
+      "sameAs": ["https://www.linkedin.com/in/sandervanveldhuizen"]
+    }
+  }
+  </script>
 </head>
 <body>
   <div class="page">
     <header>
-  <h1>Congressen & Seminars</h1>
-  <p>
-    Dit overzicht bevat de grotere congressen, seminars en technische events die ik de afgelopen jaren heb bezocht.
-    Ik gebruik deze pagina om mijn professionele ontwikkeling en technische verdieping inzichtelijk te maken.
-    Meetups heb ik niet opgenomen; dit overzicht richt zich op de grotere events en congressen.
-    Voor mijn volledige CV en achtergrond verwijs ik graag naar 
-    <a href="https://www.linkedin.com/in/sandervanveldhuizen">LinkedIn</a>.
-  </p>
-</header>
+      <h1>Congressen & Seminars</h1>
+      <p>
+        Dit overzicht bevat de grotere congressen, seminars en technische events die ik de afgelopen jaren heb bezocht.
+        Ik gebruik deze pagina om mijn professionele ontwikkeling en technische verdieping inzichtelijk te maken.
+        Meetups heb ik niet opgenomen; dit overzicht richt zich op de grotere events en congressen.
+        Voor mijn volledige CV en achtergrond verwijs ik graag naar
+        <a href="https://www.linkedin.com/in/sandervanveldhuizen" rel="me noopener">LinkedIn</a>.
+      </p>
+    </header>
 
-    <section class="timeline">
+    <main class="timeline">
 
 <!-- 2026 -->
-<div class="year">2026</div> 
+<section aria-labelledby="y2026">
+<h2 class="year" id="y2026">2026</h2>
+<ul class="events">
 
-<div class="event">
-  <div class="card">
-    <div class="event-title">Edgecase 2026</div>
-    <div class="meta">
+<li class="event">
+  <article class="card">
+    <h3 class="event-title">Edgecase 2026</h3>
+    <p class="meta">
       <span>Hilversum</span>
       <span>2026</span>
-    </div>
-    <p class="insight">
-      Het grootste Kubernetes-gerichte evenement van Nederland
     </p>
-    <div class="tags">
-      <span class="tag">Kubernetes</span>
-    </div>
-  </div>
-</div>
+    <p class="insight">
+      Het grootste Kubernetes-gerichte evenement van Nederland.
+    </p>
+    <ul class="tags">
+      <li class="tag">Kubernetes</li>
+    </ul>
+  </article>
+</li>
 
-<div class="event">
-  <div class="card">
-    <div class="event-title">Azure Fest</div>
-    <div class="meta">
+<li class="event">
+  <article class="card">
+    <h3 class="event-title">Azure Fest</h3>
+    <p class="meta">
       <span>Nieuwegein</span>
       <span>2026</span>
-    </div>
-    <p class="insight">
-      In-person community event for all things Azure. World-class local and international speakers sharing real world experiences, best practices and the latest developments on the Azure platform.
     </p>
-    <div class="tags">
-      <span class="tag">Azure</span>
-      <span class="tag">Identity</span>
-      <span class="tag">AI</span>
-      <span class="tag">Architecture</span>
-    </div>
-  </div>
-</div>
-      
-<div class="event">
-  <div class="card">
-    <div class="event-title">Experts Live Netherlands</div>
-    <div class="meta">
+    <p class="insight">
+      Community-event over alles rond Azure, met lokale en internationale sprekers. Zij deelden praktijkervaringen, best practices en de nieuwste ontwikkelingen op het Azure-platform.
+    </p>
+    <ul class="tags">
+      <li class="tag">Azure</li>
+      <li class="tag">Identity</li>
+      <li class="tag">AI</li>
+      <li class="tag">Architecture</li>
+    </ul>
+  </article>
+</li>
+
+<li class="event">
+  <article class="card">
+    <h3 class="event-title">Experts Live Netherlands</h3>
+    <p class="meta">
       <span>Nieuwegein</span>
       <span>2026</span>
-    </div>
+    </p>
+    <!-- TODO: deze tekst is gelijk aan Experts Live Europe 2024; vervang door je eigen indruk van 2026 -->
     <p class="insight">
       Sterke focus op cloud-architectuur, identity en schaalbare platformen. Veel waardevolle inzichten voor hybride en multi-cloud strategieën.
     </p>
-    <div class="tags">
-      <span class="tag">Azure</span>
-      <span class="tag">Identity</span>
-      <span class="tag">Architecture</span>
-    </div>
-  </div>
-</div>
-      
-<div class="event">
-  <div class="card">
-    <div class="event-title">KubeCon + CloudNativeCon Europe</div>
-    <div class="meta">
+    <ul class="tags">
+      <li class="tag">Azure</li>
+      <li class="tag">Identity</li>
+      <li class="tag">Architecture</li>
+    </ul>
+  </article>
+</li>
+
+<li class="event">
+  <article class="card">
+    <h3 class="event-title">KubeCon + CloudNativeCon Europe</h3>
+    <p class="meta">
       <span>Amsterdam</span>
       <span>2026</span>
-    </div>
+    </p>
     <p class="insight">
-      Het grootste cloudnative event van Europa, met sessies over Kubernetes, platformengineering, servicemeshes, observability en schaalbare cloudarchitecturen. 
-      Een leuke gelegenheid om nieuwe inzichten op te doen en trends binnen het CNCF ecosysteem te volgen.
-      Een dag vol cloud-native deep-dives, gericht op platform-engineering, Kubernetes-ecosysteem tooling en moderne deployment-patterns. 
+      Het grootste cloud-native event van Europa, met sessies over Kubernetes, platform engineering, service meshes, observability en schaalbare cloudarchitecturen.
+      Een mooie gelegenheid om nieuwe inzichten op te doen en trends binnen het CNCF-ecosysteem te volgen.
       Vooral de sessies over multi-cluster strategieën en open-source governance zijn waardevol voor hybride platformen.
     </p>
-    <div class="tags">
-      <span class="tag">Kubernetes</span>
-      <span class="tag">Cloud Native</span>
-      <span class="tag">CNCF</span>
-    </div>
-  </div>
-</div>
+    <ul class="tags">
+      <li class="tag">Kubernetes</li>
+      <li class="tag">Cloud Native</li>
+      <li class="tag">CNCF</li>
+    </ul>
+  </article>
+</li>
 
+</ul>
+</section>
 
 <!-- 2025 -->
-<div class="year">2025</div>
+<section aria-labelledby="y2025">
+<h2 class="year" id="y2025">2025</h2>
+<ul class="events">
 
-<div class="event">
-  <div class="card">
-    <div class="event-title">AWS Summit</div>
-    <div class="meta">
+<li class="event">
+  <article class="card">
+    <h3 class="event-title">AWS Summit</h3>
+    <p class="meta">
       <span>Amsterdam</span>
       <span>2025</span>
-    </div>
+    </p>
     <p class="insight">
       Focus op enterprise-cloud, AI-integraties en moderne platformarchitectuur. De sessies over governance en cost-optimization waren bijzonder relevant.
     </p>
-    <div class="tags">
-      <span class="tag">AWS</span>
-      <span class="tag">AI</span>
-      <span class="tag">Governance</span>
-    </div>
-  </div>
-</div>
+    <ul class="tags">
+      <li class="tag">AWS</li>
+      <li class="tag">AI</li>
+      <li class="tag">Governance</li>
+    </ul>
+  </article>
+</li>
 
+</ul>
+</section>
 
 <!-- 2024 -->
-<div class="year">2024</div>
+<section aria-labelledby="y2024">
+<h2 class="year" id="y2024">2024</h2>
+<ul class="events">
 
-<div class="event">
-  <div class="card">
-    <div class="event-title">Experts Live Europe</div>
-    <div class="meta">
+<li class="event">
+  <article class="card">
+    <h3 class="event-title">Experts Live Europe</h3>
+    <p class="meta">
       <span>Boedapest</span>
       <span>2024</span>
-    </div>
+    </p>
     <p class="insight">
       Sterke focus op cloud-architectuur, identity en schaalbare platformen. Veel waardevolle inzichten voor hybride en multi-cloud strategieën.
     </p>
-    <div class="tags">
-      <span class="tag">Azure</span>
-      <span class="tag">Identity</span>
-      <span class="tag">Architecture</span>
-    </div>
-  </div>
-</div>
+    <ul class="tags">
+      <li class="tag">Azure</li>
+      <li class="tag">Identity</li>
+      <li class="tag">Architecture</li>
+    </ul>
+  </article>
+</li>
 
-<div class="event">
-  <div class="card">
-    <div class="event-title">AWS Summit</div>
-    <div class="meta">
+<li class="event">
+  <article class="card">
+    <h3 class="event-title">AWS Summit</h3>
+    <p class="meta">
       <span>Amsterdam</span>
       <span>2024</span>
-    </div>
+    </p>
     <p class="insight">
       Interessante deep-dives in cloud-architectuur, serverless en multi-account governance. Vooral de sessies over schaalbaarheid en security waren direct toepasbaar.
     </p>
-    <div class="tags">
-      <span class="tag">AWS</span>
-      <span class="tag">Cloud</span>
-      <span class="tag">Architecture</span>
-    </div>
-  </div>
-</div>
+    <ul class="tags">
+      <li class="tag">AWS</li>
+      <li class="tag">Cloud</li>
+      <li class="tag">Architecture</li>
+    </ul>
+  </article>
+</li>
+
+</ul>
+</section>
 
 <!-- 2023 -->
-<div class="year">2023</div>
+<section aria-labelledby="y2023">
+<h2 class="year" id="y2023">2023</h2>
+<ul class="events">
 
-<div class="event">
-  <div class="card">
-    <div class="event-title">AWS Summit</div>
-    <div class="meta">
+<li class="event">
+  <article class="card">
+    <h3 class="event-title">AWS Summit</h3>
+    <p class="meta">
       <span>Amsterdam</span>
       <span>2023</span>
-    </div>
+    </p>
     <p class="insight">
-      Een goed bezocht event met veel focus op cloud-architectuur, data-platformen en serverless-oplossingen. 
+      Een goed bezocht event met veel focus op cloud-architectuur, data-platformen en serverless-oplossingen.
       De sessies over generative AI en multi-account governance waren bijzonder interessant.
     </p>
-    <div class="tags">
-      <span class="tag">AWS</span>
-      <span class="tag">Cloud</span>
-      <span class="tag">Serverless</span>
-    </div>
-  </div>
-</div>
+    <ul class="tags">
+      <li class="tag">AWS</li>
+      <li class="tag">Cloud</li>
+      <li class="tag">Serverless</li>
+    </ul>
+  </article>
+</li>
 
-<div class="event">
-  <div class="card">
-    <div class="event-title">Kubernetes Community Day</div>
-    <div class="meta">
+<li class="event">
+  <article class="card">
+    <h3 class="event-title">Kubernetes Community Day</h3>
+    <p class="meta">
       <span>Utrecht</span>
       <span>2023</span>
-    </div>
+    </p>
     <p class="insight">
-      Een compacte maar sterke dag vol CNCF-sessies over Kubernetes, platform-engineering en cloud-native patterns. 
+      Een compacte maar sterke dag vol CNCF-sessies over Kubernetes, platform-engineering en cloud-native patterns.
       Vooral de praktijkcases rondom schaalbaarheid en cluster-beheer waren waardevol.
     </p>
-    <div class="tags">
-      <span class="tag">Kubernetes</span>
-      <span class="tag">Cloud Native</span>
-      <span class="tag">CNCF</span>
-    </div>
-  </div>
-</div>
+    <ul class="tags">
+      <li class="tag">Kubernetes</li>
+      <li class="tag">Cloud Native</li>
+      <li class="tag">CNCF</li>
+    </ul>
+  </article>
+</li>
+
+</ul>
+</section>
 
 <!-- 2019 -->
-<div class="year">2019</div>
+<section aria-labelledby="y2019">
+<h2 class="year" id="y2019">2019</h2>
+<ul class="events">
 
-<div class="event">
-  <div class="card">
-    <div class="event-title">PowerShell Europe</div>
-    <div class="meta">
+<li class="event">
+  <article class="card">
+    <h3 class="event-title">PowerShell Europe</h3>
+    <p class="meta">
       <span>Hannover</span>
       <span>2019</span>
-    </div>
+    </p>
     <p class="insight">
       Veel focus op maintainability, testing en moderne PowerShell-patterns. Zeer waardevol voor het verder professionaliseren van automation.
     </p>
-    <div class="tags">
-      <span class="tag">PowerShell</span>
-      <span class="tag">DevOps</span>
-      <span class="tag">Tooling</span>
-    </div>
-  </div>
-</div>
+    <ul class="tags">
+      <li class="tag">PowerShell</li>
+      <li class="tag">DevOps</li>
+      <li class="tag">Tooling</li>
+    </ul>
+  </article>
+</li>
 
-<div class="event">
-  <div class="card">
-    <div class="event-title">Experts Live Europe</div>
-    <div class="meta">
+<li class="event">
+  <article class="card">
+    <h3 class="event-title">Experts Live Europe</h3>
+    <p class="meta">
       <span>Praag</span>
       <span>2019</span>
-    </div>
+    </p>
     <p class="insight">
       Diepgaande sessies over Azure, cloud-architectuur en operations. Vooral de governance-scenario’s waren direct toepasbaar in enterprise-omgevingen.
     </p>
-    <div class="tags">
-      <span class="tag">Azure</span>
-      <span class="tag">Cloud</span>
-      <span class="tag">Architecture</span>
-    </div>
-  </div>
-</div>
+    <ul class="tags">
+      <li class="tag">Azure</li>
+      <li class="tag">Cloud</li>
+      <li class="tag">Architecture</li>
+    </ul>
+  </article>
+</li>
 
-<div class="event">
-  <div class="card">
-    <div class="event-title">Ansible Automates</div>
-    <div class="meta">
+<li class="event">
+  <article class="card">
+    <h3 class="event-title">Ansible Automates</h3>
+    <p class="meta">
       <span>Bussum</span>
       <span>2019</span>
-    </div>
+    </p>
     <p class="insight">
-      Een inspirerend event met veel focus op automationstrategieën, enterpriseusecases en de rol van Ansible in hybride omgevingen. 
+      Een inspirerend event met veel focus op automationstrategieën, enterprise-use-cases en de rol van Ansible in hybride omgevingen.
       Vooral de sessies over governance, schaalbaarheid en automationframeworks sloten goed aan bij mijn eigen werk.
     </p>
-    <div class="tags">
-      <span class="tag">Ansible</span>
-      <span class="tag">Automation</span>
-      <span class="tag">DevOps</span>
-    </div>
-  </div>
-</div>
+    <ul class="tags">
+      <li class="tag">Ansible</li>
+      <li class="tag">Automation</li>
+      <li class="tag">DevOps</li>
+    </ul>
+  </article>
+</li>
 
+</ul>
+</section>
 
 <!-- 2018 -->
-<div class="year">2018</div>
+<section aria-labelledby="y2018">
+<h2 class="year" id="y2018">2018</h2>
+<ul class="events">
 
-<div class="event">
-  <div class="card">
-    <div class="event-title">Experts Live Netherlands</div>
-    <div class="meta">
+<li class="event">
+  <article class="card">
+    <h3 class="event-title">Experts Live Netherlands</h3>
+    <p class="meta">
       <span>Ede</span>
       <span>2018</span>
-    </div>
+    </p>
     <p class="insight">
       Goede mix van deep-dives en praktijkcases. Vooral de sessies over governance en identity waren direct toepasbaar in hybride omgevingen.
     </p>
-    <div class="tags">
-      <span class="tag">Azure</span>
-      <span class="tag">Governance</span>
-      <span class="tag">Hybrid</span>
-    </div>
-  </div>
-</div>
+    <ul class="tags">
+      <li class="tag">Azure</li>
+      <li class="tag">Governance</li>
+      <li class="tag">Hybrid</li>
+    </ul>
+  </article>
+</li>
 
+</ul>
+</section>
 
 <!-- 2017 -->
-<div class="year">2017</div>
+<section aria-labelledby="y2017">
+<h2 class="year" id="y2017">2017</h2>
+<ul class="events">
 
-<div class="event">
-  <div class="card">
-    <div class="event-title">PowerShell Europe</div>
-    <div class="meta">
+<li class="event">
+  <article class="card">
+    <h3 class="event-title">PowerShell Europe</h3>
+    <p class="meta">
       <span>Hannover</span>
       <span>2017</span>
-    </div>
+    </p>
     <p class="insight">
       Diepgaande PowerShell-sessies met focus op enterprise automation, tooling en best practices. Veel inspiratie voor het professionaliseren van mijn eigen frameworks.
     </p>
-    <div class="tags">
-      <span class="tag">PowerShell</span>
-      <span class="tag">Automation</span>
-      <span class="tag">Scripting</span>
-    </div>
-  </div>
-</div>
+    <ul class="tags">
+      <li class="tag">PowerShell</li>
+      <li class="tag">Automation</li>
+      <li class="tag">Scripting</li>
+    </ul>
+  </article>
+</li>
 
-<div class="event">
-  <div class="card">
-    <div class="event-title">Microsoft Tech Summit</div>
-    <div class="meta">
+<li class="event">
+  <article class="card">
+    <h3 class="event-title">Microsoft Tech Summit</h3>
+    <p class="meta">
       <span>Amsterdam</span>
       <span>2017</span>
-    </div>
+    </p>
     <p class="insight">
       Brede mix van Azure, identity en cloud-architectuur sessies. Vooral de hands-on labs en best practices voor hybride omgevingen waren waardevol.
     </p>
-    <div class="tags">
-      <span class="tag">Azure</span>
-      <span class="tag">Cloud</span>
-      <span class="tag">Identity</span>
-    </div>
-  </div>
-</div>
+    <ul class="tags">
+      <li class="tag">Azure</li>
+      <li class="tag">Cloud</li>
+      <li class="tag">Identity</li>
+    </ul>
+  </article>
+</li>
 
-<div class="event">
-  <div class="card">
-    <div class="event-title">VMworld / VMUG NL</div>
-    <div class="meta">
+<li class="event">
+  <article class="card">
+    <h3 class="event-title">VMworld / VMUG NL</h3>
+    <p class="meta">
       <span>Utrecht</span>
       <span>2017</span>
-    </div>
+    </p>
     <p class="insight">
       Sterke sessies over VMware-innovaties, vSphere, NSX en operations. Veel focus op troubleshooting en best practices uit het veld.
     </p>
-    <div class="tags">
-      <span class="tag">VMware</span>
-      <span class="tag">vSphere</span>
-      <span class="tag">NSX</span>
-    </div>
-  </div>
-</div>
+    <ul class="tags">
+      <li class="tag">VMware</li>
+      <li class="tag">vSphere</li>
+      <li class="tag">NSX</li>
+    </ul>
+  </article>
+</li>
 
+</ul>
+</section>
 
 <!-- 2016 -->
-<div class="year">2016</div>
+<section aria-labelledby="y2016">
+<h2 class="year" id="y2016">2016</h2>
+<ul class="events">
 
-<div class="event">
-  <div class="card">
-    <div class="event-title">Experts Live Netherlands</div>
-    <div class="meta">
+<li class="event">
+  <article class="card">
+    <h3 class="event-title">Experts Live Netherlands</h3>
+    <p class="meta">
       <span>Ede</span>
       <span>2016</span>
-    </div>
+    </p>
     <p class="insight">
       Sterke community-sessies over Azure, automation en hybride platformen. Veel praktische inzichten die direct toepasbaar waren in operations.
     </p>
-    <div class="tags">
-      <span class="tag">Azure</span>
-      <span class="tag">Automation</span>
-      <span class="tag">Community</span>
-    </div>
-  </div>
-</div>
+    <ul class="tags">
+      <li class="tag">Azure</li>
+      <li class="tag">Automation</li>
+      <li class="tag">Community</li>
+    </ul>
+  </article>
+</li>
 
-      <!-- Voeg hier makkelijk nieuwe jaren/events toe -->
+</ul>
+</section>
 
-    </section>
+      <!-- Nieuw jaar toevoegen: kopieer een <section> hierboven.
+           Nieuw event: kopieer een <li class="event"> binnen de juiste <ul class="events">. -->
+
+    </main>
 
     <footer>
-      Laatste update: maart 2026 · Site gehost op GitHub Pages
+      Laatste update: oktober 2026 · Site gehost op GitHub Pages
     </footer>
   </div>
 </body>
